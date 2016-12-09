@@ -28,6 +28,7 @@ class Input extends React.Component {
       rtl,
       autoFocus,
       onFocus,
+      onKeyUp,
       onBlur
     } = this.props;
 
@@ -68,6 +69,7 @@ class Input extends React.Component {
           placeholder={placeholder}
           tabIndex={tabIndex}
           autoFocus={autoFocus}
+          onKeyUp={onKeyUp}
           />
 
         {exclamation}
@@ -126,7 +128,8 @@ Input.propTypes = {
   onFocus: React.PropTypes.func,
   onEscapePressed: React.PropTypes.func,
   onEnterPressed: React.PropTypes.func,
-  onKeyDown: React.PropTypes.func
+  onKeyDown: React.PropTypes.func,
+  onKeyUp: React.PropTypes.func
 };
 
 export default Input;

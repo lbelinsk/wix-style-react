@@ -117,6 +117,19 @@ describe('Input', () => {
     });
   });
 
+  describe('onKeyUp attribute', () => {
+    it('should be called after keybord key got pressed and then released', () => {
+      const onKeyUp = jest.fn();
+      const event = {target: {value: 'world'}};
+
+      const driver = createDriver({onKeyUp});
+
+      driver.trigger('keyUp', event);
+
+      expect(onKeyUp).toBeCalledWith(event);
+    });
+  });
+
   describe('onFocus attribute', () => {
     it('should be called when the input gets focused', () => {
       const onFocus = jest.fn();
