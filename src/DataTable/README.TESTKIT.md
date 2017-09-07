@@ -20,6 +20,11 @@
 | mouseEnterRow | (number, eventData) | - | mouse enter with <eventData> the row index <number> |
 | mouseLeaveRow | (number, eventData) | - | mouse leave with <eventData> the row index <number> |
 | setProps | json | element | returns a clone of this element with the new props from the json |
+| hasRowDetails | string | bool | true if row index has details |
+| getRowDetailsText | string | string | returns details text |
+| hasSortableTitle | string | bool | true if column title is sortable |
+| clickSort | (index, eventData) | - | click with <eventData> the column index <number> |
+| getRowDetails | string | element | returns row details by row index |
 
 ## Protractor TestKit API
 
