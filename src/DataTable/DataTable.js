@@ -114,6 +114,10 @@ class DataTable extends WixComponent {
       {rowEventHandler: onMouseLeaveRow, eventHandler: 'onMouseLeave'}
     ];
 
+    if (!handlers.find(f => f.eventHandler === 'onClick').rowEventHandler && rowDetails) {
+      optionalRowProps.onClick = () => this.tryToggleRowDetails('onClick', rowNum);
+    }
+
     handlers.forEach(({rowEventHandler, eventHandler}) => {
       if (rowEventHandler) {
         optionalRowProps[eventHandler] = event => {
