@@ -178,12 +178,14 @@ class DataTable extends WixComponent {
     }
   }
 
-  toggleRowDetails = selectedRow => {
-    let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
-    if (this.props.allowMultiDetailsExpansion) {
-      selectedRows = Object.assign({}, this.state.selectedRows, {[selectedRow]: !this.state.selectedRows[selectedRow]});
-    }
-    this.setState({selectedRows});
+  toggleRowDetails = rowNum => {
+    const {selectedRows} = this.state;
+
+    let newSelectedRows = this.props.allowMultiDetailsExpansion ?
+      {...selectedRows, [rowNum]: !selectedRows[rowNum]} :
+      {[rowNum]: !selectedRows[rowNum]};
+
+    this.setState({selectedRows: newSelectedRows});
   }
 }
 
