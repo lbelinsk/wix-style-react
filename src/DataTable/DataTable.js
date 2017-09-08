@@ -103,10 +103,10 @@ class DataTable extends WixComponent {
     </tbody>
   );
 
-  onRowClick(rowData, rowNum) {
+  onRowClick = (rowData, rowNum) => {
     const {onRowClick, rowDetails} = this.props;
     onRowClick && onRowClick(rowData, rowNum);
-    rowDetails && this.toggleRowDetails(rowData, rowNum);
+    rowDetails && this.toggleRowDetails(rowNum);
   }
 
   renderRow = (rowData, rowNum) => {
@@ -115,7 +115,7 @@ class DataTable extends WixComponent {
     const optionalRowProps = {};
 
     const handlers = [
-      {rowEventHandler: this.onRowClick.bind(this, rowData, rowNum), eventHandler: 'onClick'},
+      {rowEventHandler: this.onRowClick, eventHandler: 'onClick'},
       {rowEventHandler: onMouseEnterRow, eventHandler: 'onMouseEnter'},
       {rowEventHandler: onMouseLeaveRow, eventHandler: 'onMouseLeave'}
     ];
@@ -178,7 +178,7 @@ class DataTable extends WixComponent {
     }
   }
 
-  toggleRowDetails = (eventHandler, selectedRow) => {
+  toggleRowDetails = selectedRow => {
     let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
     if (this.props.allowMultiDetailsExpansion) {
       selectedRows = Object.assign({}, this.state.selectedRows, {[selectedRow]: !this.state.selectedRows[selectedRow]});
